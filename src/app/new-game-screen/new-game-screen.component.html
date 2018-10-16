@@ -1,0 +1,26 @@
+<div class="content">
+  <div class="menu">
+    <button *ngFor="let round of rounds"
+            [attr.data-index]="round.index"
+            (click)="selectRound($event)"
+            class="menu_select-round menu_select-round__{{round.index === selectedRound.index}}">
+      {{round.name}}
+    </button>
+  </div>
+  <app-round-description *ngFor="let round of rounds"
+                         [attr.data-index]="round.index"
+                         [round]="round"
+                         [question]="this.questionService.getQuestionForRound(round)"
+                         [answers]="this.answerService.getAnswersForRound(round)"
+                         [isSelectedRound]="round.index === selectedRound.index">
+  </app-round-description>
+
+  <button class="control_button"
+          (click)="continue()">
+    Продолжить
+  </button>
+  <button class="control_button"
+          (click)="back()">
+    Назад
+  </button>
+</div>

@@ -1,0 +1,22 @@
+<div class="grid_item">
+  <div class="grid_item_score">
+    {{team.score}}
+  </div>
+  <div class="grid_item_team">
+    {{team.name}}
+  </div>
+  <div class="grid_item_round">
+    {{this.gameService.curRound.shortName}}
+  </div>
+  <button *ngFor="let miss of misses"
+          class="grid_item_miss grid_item_miss__{{team.missCount >= miss}}"
+          [disabled]="this.gameService.curRound.pointsStrict"
+          (click)="missClick($event)">
+    X
+  </button>
+  <button (click)="this.gameService.activateTeam(team)"
+          [disabled]="this.gameService.curTeam"
+          class="grid_item_activate_team grid_item_activate_team__{{this.gameService.curTeam === team}}">
+    Играем с этой командой
+  </button>
+</div>

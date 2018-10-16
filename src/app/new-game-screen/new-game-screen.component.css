@@ -1,0 +1,41 @@
+.menu {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  padding: 0px 20%;
+}
+
+.menu_select-round {
+  float: left;
+  outline: none;
+  padding: 14px 16px;
+  transition: 0.2s;
+  font-size: 17px;  
+  width: 50%;
+  display: block;
+  background-color: #C9B300;
+  cursor: pointer;
+  color: #000;
+  font-size: 20px;
+  border: 1px solid;
+  border-color: #B02F0C;
+  padding: 16px 0px;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+.menu_select-round:hover:not(.menu_select-round__true) {
+  background-color: #F8DE00;
+}
+
+.menu_select-round__true {
+  background-color: #B02F0C;
+  font-weight: bold;
+  color: #F8DE00;
+}
+
+.content {
+  color: white;
+  margin: 100px auto;
+  text-align: center;
+}

@@ -1,0 +1,40 @@
+<div class="grid">
+
+  <app-team-bar [team]="this.gameService.team1"></app-team-bar>
+
+  <div class="grid_item">
+    <div class="grid_item_score">
+      {{this.gameService.curScore}}
+    </div>
+    <div class="grid_item_question grid_item_question__{{this.gameService.isStarted}}">
+      {{this.gameService.curQuestion.content}}
+    </div>
+    <div *ngFor="let answer of this.gameService.curAnswers" class="grid_item_answer">
+      <div class="grid_item_answer_content" (click)="flip($event, answer)">
+        <div class="grid_item_answer_content__front">{{answer.index}}</div>
+        <div class="grid_item_answer_content__back">
+          {{answer.content}}
+          <span class="grid_item_answer_content__back_right">
+            {{answer.points}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-team-bar [team]="this.gameService.team2"></app-team-bar>
+
+</div>
+
+<div class="content">
+  <button [disabled]="this.gameService.isStarted"
+          (click)="this.gameService.startRound()"
+          class="control_button">
+    Старт
+  </button>
+  <button [disabled]="!this.gameService.isStarted"
+          (click)="this.gameService.nextRound()"
+          class="control_button">
+    Следующий раунд
+  </button>
+</div>

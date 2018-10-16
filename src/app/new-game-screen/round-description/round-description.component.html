@@ -1,0 +1,37 @@
+<div class="description description-visibility__{{isSelectedRound}}">
+  <p *ngIf="!round.pointsStrict" class="description_header">
+    Впишите свой вопрос и укажите варианты ответов для него. Также для каждого варианта укажите количество очков в пределах от 1 до 99. В сумме количество очков должно быть не больше 100.
+  </p>
+  <p *ngIf="round.pointsStrict" class="description_header">
+    Впишите свой вопрос и укажите варианты ответов для него. В этом раунде количество очков за каждый угаданный ответ фиксированное.
+  </p>
+
+  <form [formGroup]="form" class="description_form">
+    <input formControlName="question"
+           class="description_question" 
+           type="text"
+           name="question"
+           maxlength="64"
+           placeholder="Введите свой вопрос">
+    <div *ngFor="let answer of answers"
+         class="description_answers">
+      <input formControlName="content{{answer.index}}"
+             class="description_answers_content"
+             type="text"
+             name="content{{answer.index}}"
+             maxlength="64"
+             placeholder="Вариант №{{answer.index}}">
+      <input formControlName="points{{answer.index}}"
+             class="description_answers_points"
+             type="number"
+             name="points{{answer.index}}"
+             placeholder="Очки"
+             min="1"
+             max="99">
+    </div>
+  </form>
+
+  <div *ngIf="hasError" class="description_error">
+    {{errorText}}
+  </div>
+</div>

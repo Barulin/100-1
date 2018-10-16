@@ -1,0 +1,37 @@
+<div class="content">
+  <p class="content_header">Введите названия команд</p>
+  <form [formGroup]="form"
+        class="content_form">
+    <div class="content_form_group">
+      <p>1-ая команда</p>
+      <input formControlName="team1"
+             class="input_team" 
+             type="text"
+             name="team1"
+             maxlength="30"
+             placeholder="Название первой команды">
+    </div>
+    <div class="content_form_group">
+      <p>2-ая команда</p>
+      <input formControlName="team2"
+             class="input_team"
+             type="text"
+             name="team2"
+             maxlength="30"
+             placeholder="Название второй команды">
+    </div>
+  </form>
+
+  <div *ngIf="hasError" class="content_error">
+    {{errorText}}
+  </div>
+
+  <button (click)="continue()"
+          class="control_button">
+    Начать
+  </button>
+  <button (click)="back()"
+          class="control_button">
+    Назад
+  </button>
+</div>

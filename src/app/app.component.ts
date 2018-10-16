@@ -1,10 +1,23 @@
 import { Component } from '@angular/core';
+import { GameService } from './services/game.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'testproject2';
+  title = 'app';
+  curState: string = 'start';
+
+  constructor(private gameService: GameService) {
+  }
+
+  ngOnInit() {
+    this.gameService.gameState$.subscribe((res) => {
+      this.curState = res;
+    });
+  }
+
 }

@@ -1,0 +1,35 @@
+<div class="pyro">
+  <div class="before"></div>
+  <div class="after"></div>
+</div>
+
+<div class="content">
+  <div *ngIf="!isDue"
+       class="content_main">
+    <p>Поздравляем с победой команду</p>
+    <p class="content_main_team">{{winnerTeam.name}}</p>
+  </div>
+  <div *ngIf="isDue"
+       class="content_main">
+    <p>Ничья!</p>
+  </div>
+
+  <div class="content_summary">
+    <p>Итоговый счёт</p>
+    <div class="content_summary_grid">
+      <div class="content_summary_grid_item">
+        <p class="content_summary_team">{{this.gameService.team1.name}}</p>
+        {{this.gameService.team1.score}}
+      </div>
+      <div class="content_summary_grid_item">
+        <p class="content_summary_team">{{this.gameService.team2.name}}</p>
+        {{this.gameService.team2.score}}
+      </div>
+    </div>
+  </div>
+
+  <button (click)="initStart()"
+          class="control_button">
+    На главную
+  </button>
+</div>
